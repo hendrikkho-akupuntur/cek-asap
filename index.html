@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#123c36">
+<title>Cek Dampak Asap Karhutla | Skrining Kesehatan</title>
+<meta name="description" content="Skrining mandiri gejala dan faktor risiko paparan asap karhutla. Bukan alat diagnosis.">
+<style>
+:root{--ink:#17332f;--muted:#5e716d;--green:#176b58;--pale:#edf7f2;--line:#d8e5df;--red:#a92727;--redbg:#fff0ee;--amber:#8a5700;--amberbg:#fff6df;--blue:#194f8a;--bluebg:#edf5ff;--white:#fff;--shadow:0 10px 30px rgba(20,55,45,.08)}
+*{box-sizing:border-box}body{margin:0;background:#f5f8f6;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.55}
+.wrap{max-width:850px;margin:auto;padding:18px}.hero{background:linear-gradient(135deg,#123c36,#24765f);color:#fff;border-radius:22px;padding:28px 24px;margin:8px 0 18px;box-shadow:var(--shadow)}
+.eyebrow{font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;opacity:.85}.hero h1{font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.12;margin:.5rem 0}.hero p{margin:.65rem 0 0;max-width:650px;color:#e8f4ef}
+.notice{background:#fff9e9;border:1px solid #f0d58a;border-radius:14px;padding:14px 16px;margin:14px 0;color:#614b18}
+.progressbox,.panel,.result{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px;margin:14px 0;box-shadow:var(--shadow)}
+.progress-head{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;color:var(--muted);margin-bottom:8px}.bar{height:7px;background:#e6eeea;border-radius:99px;overflow:hidden}.bar span{display:block;height:100%;width:0;background:var(--green);transition:width .2s}
+h2{font-size:1.2rem;margin:0 0 8px}h3{font-size:1rem;margin:18px 0 8px}.sub{color:var(--muted);margin-top:0;font-size:.93rem}
+.q{padding:14px 0;border-top:1px solid #edf1ef}.q:first-of-type{border-top:0}.q legend,.question{font-weight:700;display:block;margin-bottom:8px}.choices{display:grid;gap:8px}.choice{display:flex;align-items:flex-start;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:#fff}.choice:has(input:checked){border-color:var(--green);background:var(--pale)}input[type=radio],input[type=checkbox]{accent-color:var(--green);width:18px;height:18px;margin-top:3px;flex:0 0 auto}
+.field{width:100%;padding:12px;border:1px solid #bdcec6;border-radius:10px;font:inherit;background:#fff;color:var(--ink)}.field:focus,button:focus{outline:3px solid #a7d7c6;outline-offset:2px}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.btn{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--green);color:#fff}.secondary{background:#eaf2ee;color:var(--ink);border:1px solid var(--line)}.danger{background:#a92727;color:#fff}.btn:disabled{opacity:.45;cursor:not-allowed}
+.hidden{display:none!important}.result{border-width:2px}.result.red{border-color:#e6a5a0;background:var(--redbg)}.result.amber{border-color:#e8ca80;background:var(--amberbg)}.result.green{border-color:#a8d5be;background:var(--pale)}.result h2{font-size:1.35rem}.tag{display:inline-block;font-size:.78rem;font-weight:800;border-radius:99px;padding:4px 9px;margin-bottom:8px;background:#fff9}
+ul{padding-left:21px}li{margin:.35rem 0}.small{font-size:.85rem;color:var(--muted)}.footer{padding:14px 4px 30px;color:var(--muted);font-size:.84rem}.pill{display:inline-block;background:#eaf2ee;border-radius:999px;padding:4px 9px;font-size:.8rem;margin:3px 3px 3px 0}
+hr{border:0;border-top:1px solid var(--line);margin:18px 0}
+.aq{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:18px;margin:14px 0;box-shadow:var(--shadow)}
+.aq-head{display:flex;justify-content:space-between;align-items:center;gap:10px}.aq-head h2{margin:0;font-size:1.15rem}.aq-time{margin:2px 0 0;font-size:.8rem;color:var(--muted)}
+.aq-0{background:#e8f6ec;border-color:#9fd3ae;color:#14532d}.aq-1{background:#fff8d6;border-color:#e6cf62;color:#5c4a00}.aq-2{background:#ffeccf;border-color:#efb46a;color:#7a3e00}.aq-3{background:#ffe1de;border-color:#e59a94;color:#8a1c1c}.aq-4{background:#f1e3f7;border-color:#c79ad8;color:#5b1f73}.aq-5{background:#f3dde3;border-color:#c98a9c;color:#5f1230}
+.aq-hero{display:flex;gap:14px;align-items:center;border:2px solid;border-radius:16px;padding:14px;margin-top:12px}
+.aq-score{min-width:84px;text-align:center;font-size:2.6rem;font-weight:800;line-height:1}.aq-score small{display:block;font-size:.7rem;font-weight:700;margin-top:4px;opacity:.8}
+.aq-label{font-size:1.25rem;font-weight:800;line-height:1.2}.aq-tip{margin:4px 0 0;font-size:.9rem}
+.aq-extra{display:flex;flex-wrap:wrap;gap:8px 12px;align-items:center;margin-top:10px;font-size:.88rem;color:var(--muted)}.aq-chip{background:#f5f8f6;border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--ink)}.aq-extra details summary{cursor:pointer;text-decoration:underline}
+.aq-cmp{display:grid;grid-template-columns:1fr;gap:10px;margin-top:14px}
+.aq-box{border:1px solid var(--line);border-radius:14px;padding:10px 12px;background:#fbfdfc}.aq-box h3{margin:0 0 4px;font-size:.88rem;color:var(--muted)}
+.aq-row{display:flex;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line)}.aq-rank{flex:none;width:22px;height:22px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-size:.75rem;font-weight:800}
+.aq-nm{flex:1;min-width:0;font-weight:700;font-size:.95rem}.aq-nm small{display:block;font-weight:400;color:var(--muted);font-size:.76rem}
+.aq-pill{flex:none;min-width:52px;text-align:center;border:1.5px solid;border-radius:999px;padding:3px 10px;font-weight:800;font-size:.9rem}
+.aq-note{margin:10px 0 0;font-size:.82rem;color:var(--muted)}.aq-msg{margin:12px 0 0}.aq-src{margin:12px 0 0;font-size:.78rem;color:var(--muted)}
+.aq-warn{background:var(--amberbg);border:1px solid #e8ca80;border-radius:10px;padding:8px 12px;color:#614b18;font-size:.85rem;margin-top:12px}
+@media(min-width:650px){.aq-cmp{grid-template-columns:1fr 1fr}}
+@media(max-width:420px){.aq-score{min-width:70px;font-size:2.2rem}.aq-label{font-size:1.1rem}}
+@media(min-width:650px){.choices.two{grid-template-columns:1fr 1fr}.hero{padding:34px}.panel,.progressbox,.result{padding:24px}}
+@media print{body{background:white}.hero{background:white;color:#111;box-shadow:none;border:1px solid #ccc}.hero p{color:#333}.progressbox,.panel,.actions,.footer,.notice,.aq{display:none!important}.result{box-shadow:none}}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Skrining kesehatan masyarakat · Gratis</div>
+    <h1>Cek Dampak Asap Karhutla</h1>
+    <p>Kenali gejala, faktor risiko, dan langkah yang dapat Anda lakukan saat kualitas udara memburuk. Waktu pengisian sekitar 2 menit.</p>
+  </header>
+
+  <div class="notice" role="note">
+    <strong>Jika sekarang Anda mengalami sesak napas berat, nyeri/tekanan dada, bibir atau wajah kebiruan, kebingungan, atau pingsan:</strong>
+    jangan lanjutkan kuesioner. Segera ke IGD atau hubungi layanan darurat setempat. Jangan menyetir sendiri bila kondisi berat.
+  </div>
+
+
+  <section class="aq" id="aqCard" aria-label="Kondisi udara Kota Medan">
+    <div class="aq-head">
+      <div>
+        <h2>Kondisi udara Medan saat ini</h2>
+        <p class="aq-time" id="aqTime">Memuat…</p>
+      </div>
+      <button class="btn secondary" id="aqRefresh" type="button">Perbarui</button>
+    </div>
+    <div id="aqBody" aria-live="polite"></div>
+    <p class="aq-src">Sumber: <a href="https://open-meteo.com/en/docs/air-quality-api" target="_blank" rel="noopener">Open-Meteo</a> · data model <a href="https://atmosphere.copernicus.eu" target="_blank" rel="noopener">Copernicus CAMS</a> (CC BY 4.0). Perkiraan, bukan hasil alat ukur di rumah Anda. Info resmi: <a href="https://www.bmkg.go.id" target="_blank" rel="noopener">BMKG</a>.</p>
+  </section>
+
+  <section class="progressbox" aria-label="Kemajuan pengisian">
+    <div class="progress-head"><span id="progressText">Belum ada pertanyaan dijawab</span><span id="progressPct">0%</span></div>
+    <div class="bar"><span id="progressBar"></span></div>
+  </section>
+
+  <form id="screeningForm" novalidate>
+    <section class="panel">
+      <h2>1. Tentang orang yang diperiksa</h2>
+      <p class="sub">Isi untuk diri sendiri atau orang yang sedang Anda bantu. Tidak perlu menuliskan nama.</p>
+      <div class="q">
+        <label class="question" for="age">Kelompok usia</label>
+        <select class="field" id="age" name="age" required>
+          <option value="">Pilih kelompok usia</option><option value="child">Anak di bawah 18 tahun</option><option value="adult">18–64 tahun</option><option value="older">65 tahun atau lebih</option>
+        </select>
+      </div>
+      <fieldset class="q" style="border-left:0;border-right:0;border-bottom:0;padding-left:0;padding-right:0">
+        <legend>Apakah ada kondisi berikut?</legend>
+        <div class="choices two">
+          <label class="choice"><input type="checkbox" name="risk" value="Asma atau PPOK/penyakit paru kronis"><span>Asma atau penyakit paru kronis (termasuk PPOK)</span></label>
+          <label class="choice"><input type="checkbox" name="risk" value="Penyakit jantung atau pembuluh darah"><span>Penyakit jantung atau pembuluh darah</span></label>
+          <label class="choice"><input type="checkbox" name="risk" value="Sedang hamil"><span>Sedang hamil</span></label>
+          <label class="choice"><input type="checkbox" name="risk" value="Diabetes atau penyakit ginjal kronis"><span>Diabetes atau penyakit ginjal kronis</span></label>
+          <label class="choice"><input type="checkbox" name="risk" value="Tidak ada kondisi di atas" id="noRisk"><span>Tidak ada kondisi di atas / tidak tahu</span></label>
+        </div>
+      </fieldset>
+    </section>
+
+    <section class="panel">
+      <h2>2. Paparan asap</h2>
+      <p class="sub">Pilih jawaban yang paling sesuai dalam 7 hari terakhir.</p>
+      <div class="q">
+        <label class="question" for="exposure">Seberapa sering Anda terpapar asap atau udara berkabut berbau terbakar?</label>
+        <select class="field" id="exposure" required>
+          <option value="">Pilih jawaban</option><option value="none">Tidak merasa terpapar</option><option value="some">Sesekali / sebentar</option><option value="often">Sering atau berjam-jam per hari</option><option value="work">Bekerja di luar ruangan / dekat sumber asap</option>
+        </select>
+      </div>
+      <div class="q">
+        <label class="question" for="outdoor">Saat udara berasap, berapa lama biasanya berada di luar ruangan?</label>
+        <select class="field" id="outdoor" required>
+          <option value="">Pilih jawaban</option><option value="low">Hampir tidak pernah / kurang dari 1 jam</option><option value="mid">Sekitar 1–3 jam</option><option value="high">Lebih dari 3 jam</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>3. Gejala saat ini</h2>
+      <p class="sub">Pilih semua yang dialami sekarang atau sejak paparan asap. Gejala dapat memiliki penyebab lain, bukan hanya asap.</p>
+      <fieldset class="q" style="border:0;padding-left:0;padding-right:0">
+        <legend>Apakah ada gejala berikut?</legend>
+        <div class="choices two">
+          <label class="choice"><input type="checkbox" name="symptom" value="Batuk baru atau batuk memburuk"><span>Batuk baru atau memburuk</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Tenggorokan terasa gatal/iritasi"><span>Tenggorokan gatal atau iritasi</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Mata perih/iritasi"><span>Mata perih atau iritasi</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Pilek atau hidung iritasi"><span>Pilek atau hidung iritasi</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Mengi/napas berbunyi"><span>Mengi atau napas berbunyi</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Sesak napas"><span>Sesak napas</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Sakit kepala atau pusing"><span>Sakit kepala atau pusing</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Jantung berdebar tidak biasa"><span>Jantung berdebar tidak biasa</span></label>
+          <label class="choice"><input type="checkbox" name="symptom" value="Tidak ada gejala di atas" id="noSymptoms"><span>Tidak ada gejala di atas</span></label>
+        </div>
+      </fieldset>
+      <div class="q">
+        <label class="question" for="duration">Jika ada gejala, bagaimana perkembangannya?</label>
+        <select class="field" id="duration">
+          <option value="none">Tidak ada gejala</option><option value="improving">Membaik</option><option value="same">Menetap / berulang</option><option value="worse">Makin berat atau mengganggu aktivitas</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>4. Periksa tanda bahaya</h2>
+      <p class="sub">Jawab berdasarkan keadaan saat ini. Jika ragu apakah gejala termasuk berat, cari pertolongan medis.</p>
+      <div class="choices">
+        <label class="choice"><input type="checkbox" id="redBreath"><span><strong>Sesak berat</strong>, sulit berbicara dalam kalimat, atau sulit bernapas saat istirahat</span></label>
+        <label class="choice"><input type="checkbox" id="redChest"><span><strong>Nyeri atau tekanan dada</strong> yang baru, berat, atau menetap</span></label>
+        <label class="choice"><input type="checkbox" id="redBlue"><span><strong>Bibir/wajah kebiruan</strong>, kebingungan, penurunan kesadaran, atau pingsan</span></label>
+      </div>
+    </section>
+
+    <div class="actions">
+      <button class="btn primary" type="submit">Lihat hasil skrining</button>
+      <button class="btn secondary" type="reset">Ulangi dari awal</button>
+    </div>
+  </form>
+
+  <section id="result" class="result hidden" aria-live="polite" tabindex="-1">
+    <div id="resultTag" class="tag"></div>
+    <h2 id="resultTitle"></h2>
+    <p id="resultSummary"></p>
+    <div id="resultDetails"></div>
+    <hr>
+    <p class="small" id="resultDate"></p>
+    <div class="actions">
+      <button class="btn primary" id="shareBtn" type="button">Konsultasi dengan dr. Hendrik via WhatsApp</button>
+      <button class="btn secondary" id="printBtn" type="button">Cetak / simpan PDF</button>
+      <button class="btn secondary" id="editBtn" type="button">Perbaiki jawaban</button>
+    </div>
+    <p class="small" id="shareNote">WhatsApp hanya akan dibuka setelah Anda menekan tombol di atas. Periksa isi pesan dan penerima sebelum mengirim. Hasil tidak dikirim otomatis oleh halaman ini.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Langkah melindungi diri dari asap</h2>
+    <ul>
+      <li>Pantau informasi kualitas udara dan arahan pemerintah setempat; asap yang berbahaya tidak selalu terlihat jelas.</li>
+      <li>Kurangi aktivitas fisik di luar ruangan ketika asap pekat atau kualitas udara memburuk.</li>
+      <li>Jika memungkinkan, berada di ruang dalam yang lebih bersih; tutup pintu dan jendela saat asap tinggi bila aman, dan gunakan filtrasi udara yang sesuai bila tersedia.</li>
+      <li>Jika harus keluar, gunakan respirator yang pas seperti N95/KN95 yang memenuhi standar dan menutup rapat hidung serta mulut. Masker kain tidak memberi perlindungan setara terhadap partikel halus.</li>
+      <li>Orang dengan asma atau penyakit kronis tetap mengikuti rencana pengobatan dari tenaga kesehatan; jangan menghentikan atau mengubah obat sendiri.</li>
+      <li>Jangan menunda pertolongan untuk tanda bahaya. Untuk gejala yang menetap atau memburuk, hubungi tenaga kesehatan.</li>
+    </ul>
+    <p class="small">Skrining ini sendiri tidak mengukur kualitas udara. Data kualitas udara di bagian atas adalah perkiraan per jam dan dapat berbeda dari kondisi di sekitar Anda; gunakan juga informasi resmi BMKG atau pemerintah daerah.</p>
+  </section>
+
+  <section class="panel">
+    <h2>Tentang skrining ini</h2>
+    <p class="small">Alat edukasi berbasis gejala, paparan, dan faktor kerentanan. Bukan instrumen diagnosis tervalidasi, bukan pengganti pemeriksaan dokter, dan tidak dapat memastikan apakah suatu gejala disebabkan oleh asap. Hasil “tidak ada tanda bahaya” bukan jaminan bebas penyakit.</p>
+    <p class="small">Dibuat untuk edukasi kesehatan masyarakat. Sebelum dipublikasikan untuk penggunaan klinis, tinjau isi, jalur rujukan, dan kontak konsultasi dengan dokter penanggung jawab.</p>
+  </section>
+
+  <footer class="footer">
+    <strong>Rujukan edukasi:</strong>
+    <ul>
+      <li><a href="https://www.who.int/news-room/fact-sheets/detail/wildfires-and-health" target="_blank" rel="noopener">WHO — Wildfires and health</a></li>
+      <li><a href="https://www.cdc.gov/wildfires/risk-factors/" target="_blank" rel="noopener">CDC — How wildfire smoke affects your body</a></li>
+      <li><a href="https://www.kemkes.go.id/id/cegah-dan-tangani-dampak-kesehatan-akibat-kabut-asap" target="_blank" rel="noopener">Kementerian Kesehatan RI — Cegah dan tangani dampak kesehatan akibat kabut asap</a></li>
+    </ul>
+    <p>Versi 1.3 · Jawaban formulir diproses lokal pada perangkat dan tidak dikirim ke server mana pun. Halaman ini hanya mengambil data kualitas udara Medan dari Open-Meteo (koordinat kota tetap, tanpa data pribadi); tanpa analitik atau cookie.</p>
+  </footer>
+</main>
+
+<script>
+/* Nomor WhatsApp konsultasi dr. Hendrik (format internasional tanpa +, spasi, atau tanda hubung). */
+const CONSULT_WA = "6285270410537";
+
+const form = document.getElementById('screeningForm');
+const resultBox = document.getElementById('result');
+const progressText = document.getElementById('progressText');
+const progressPct = document.getElementById('progressPct');
+const progressBar = document.getElementById('progressBar');
+let lastSummary = '';
+const WA_OK = /^62\d{8,15}$/.test(CONSULT_WA);
+
+/* ===== Kualitas udara (Open-Meteo / CAMS) ===== */
+const AQ_CITIES = [
+  {n:'Medan', lat:3.5952, lon:98.6722, g:'id'},
+  {n:'Banda Aceh', lat:5.5483, lon:95.3238, g:'id'},
+  {n:'Padang', lat:-0.9471, lon:100.4172, g:'id'},
+  {n:'Pekanbaru', lat:0.5071, lon:101.4478, g:'id'},
+  {n:'Jambi', lat:-1.6101, lon:103.6131, g:'id'},
+  {n:'Bengkulu', lat:-3.8004, lon:102.2655, g:'id'},
+  {n:'Palembang', lat:-2.9761, lon:104.7754, g:'id'},
+  {n:'Pontianak', lat:-0.0263, lon:109.3425, g:'id'},
+  {n:'Palangka Raya', lat:-2.2161, lon:113.9135, g:'id'},
+  {n:'Banjarmasin', lat:-3.3194, lon:114.5908, g:'id'},
+  {n:'Samarinda', lat:-0.5022, lon:117.1536, g:'id'},
+  {n:'Jakarta', lat:-6.2088, lon:106.8456, g:'id'},
+  {n:'Kuala Lumpur', lat:3.1390, lon:101.6869, g:'nb', c:'Malaysia'},
+  {n:'Kuching', lat:1.5535, lon:110.3593, g:'nb', c:'Malaysia'},
+  {n:'Singapura', lat:1.3521, lon:103.8198, g:'nb', c:'Singapura'},
+  {n:'Bandar Seri Begawan', lat:4.9031, lon:114.9398, g:'nb', c:'Brunei'},
+  {n:'Dili', lat:-8.5569, lon:125.5603, g:'nb', c:'Timor-Leste'}
+];
+const AQ_URL = 'https://air-quality-api.open-meteo.com/v1/air-quality?latitude=' + AQ_CITIES.map(c => c.lat).join(',') + '&longitude=' + AQ_CITIES.map(c => c.lon).join(',') + '&current=us_aqi,pm2_5';
+const AQ_LEVELS = [
+  {max:50,  cls:'aq-0', label:'Baik', tip:'Aman beraktivitas di luar ruangan.'},
+  {max:100, cls:'aq-1', label:'Sedang', tip:'Umumnya aman; yang mudah sesak sebaiknya kurangi aktivitas berat di luar.'},
+  {max:150, cls:'aq-2', label:'Kurang sehat bagi yang rentan', tip:'Kelompok rentan (anak, lansia, ibu hamil, penderita asma/PPOK/jantung) kurangi aktivitas di luar ruangan.'},
+  {max:200, cls:'aq-3', label:'Tidak sehat', tip:'Kurangi aktivitas di luar ruangan; pakai masker N95/KN95 bila harus keluar.'},
+  {max:300, cls:'aq-4', label:'Sangat tidak sehat', tip:'Sebaiknya tetap di dalam ruangan; pakai N95/KN95 bila harus keluar.'},
+  {max:Infinity, cls:'aq-5', label:'Berbahaya', tip:'Tetap di dalam ruangan dan ikuti arahan pemerintah.'}
+];
+let aq = null;
+function aqLevel(v) { return AQ_LEVELS.find(l => v <= l.max); }
+function aqEl(tag, cls, text) { const e = document.createElement(tag); if (cls) e.className = cls; if (text !== undefined) e.textContent = text; return e; }
+
+/* Susun data: Medan + 3 kota Indonesia tertinggi + 3 negara tetangga tertinggi */
+function buildAir(arr, cities) {
+  const rows = cities.map((c, i) => {
+    const cur = arr[i] && arr[i].current;
+    return Object.assign({}, c, {aqi: cur && typeof cur.us_aqi === 'number' ? Math.round(cur.us_aqi) : null,
+      pm25: cur && typeof cur.pm2_5 === 'number' ? cur.pm2_5 : null, time: cur ? cur.time : null});
+  });
+  const medan = rows[0];
+  if (medan.aqi === null) return null;
+  const idAll = rows.filter(r => r.g === 'id' && r.aqi !== null);
+  const idTop = idAll.filter(r => r.n !== 'Medan').sort((a, b) => b.aqi - a.aqi).slice(0, 3);
+  const medanRank = 1 + idAll.filter(r => r.aqi > medan.aqi).length;
+  const best = {};
+  rows.filter(r => r.g === 'nb' && r.aqi !== null).forEach(r => {
+    if (!best[r.c] || r.aqi > best[r.c].aqi) best[r.c] = r;
+  });
+  const nbTop = Object.values(best).sort((a, b) => b.aqi - a.aqi).slice(0, 3);
+  return {medan, idTop, nbTop, medanRank, idTotal: idAll.length};
+}
+
+function aqBox(title, list, showCity) {
+  const box = aqEl('div', 'aq-box');
+  box.appendChild(aqEl('h3', '', title));
+  if (!list.length) { box.appendChild(aqEl('p', 'small', 'Data belum tersedia.')); return box; }
+  list.forEach((r, i) => {
+    const lvl = aqLevel(r.aqi);
+    const row = aqEl('div', 'aq-row');
+    row.appendChild(aqEl('span', 'aq-rank', String(i + 1)));
+    const nm = aqEl('div', 'aq-nm', showCity ? r.c : r.n);
+    nm.appendChild(aqEl('small', '', (showCity && r.n !== r.c ? r.n + ' · ' : '') + lvl.label));
+    row.appendChild(nm);
+    row.appendChild(aqEl('span', 'aq-pill ' + lvl.cls, String(r.aqi)));
+    box.appendChild(row);
+  });
+  return box;
+}
+
+function renderAir(info) {
+  const body = document.getElementById('aqBody');
+  body.textContent = '';
+  const m = info.medan, lvl = aqLevel(m.aqi);
+  const hero = aqEl('div', 'aq-hero ' + lvl.cls);
+  const score = aqEl('div', 'aq-score', String(m.aqi));
+  score.appendChild(aqEl('small', '', 'dari 500'));
+  hero.appendChild(score);
+  const txt = aqEl('div');
+  txt.appendChild(aqEl('div', 'aq-label', lvl.label));
+  txt.appendChild(aqEl('p', 'aq-tip', lvl.tip));
+  hero.appendChild(txt);
+  body.appendChild(hero);
+
+  const extra = aqEl('div', 'aq-extra');
+  if (m.pm25 !== null) extra.appendChild(aqEl('span', 'aq-chip', 'Debu halus PM2.5: ' + m.pm25.toFixed(1) + ' µg/m³'));
+  const det = aqEl('details');
+  det.appendChild(aqEl('summary', '', 'Apa itu PM2.5?'));
+  det.appendChild(aqEl('div', '', 'Partikel asap yang sangat kecil dan bisa masuk jauh ke paru-paru.'));
+  extra.appendChild(det);
+  body.appendChild(extra);
+
+  const cmp = aqEl('div', 'aq-cmp');
+  cmp.appendChild(aqBox('Kota lain di Indonesia (tertinggi)', info.idTop, false));
+  cmp.appendChild(aqBox('Negara tetangga (tertinggi)', info.nbTop, true));
+  body.appendChild(cmp);
+  body.appendChild(aqEl('p', 'aq-note', 'Angka = skor kualitas udara (makin tinggi makin buruk). Medan peringkat ' + info.medanRank + ' dari ' + info.idTotal + ' kota Indonesia yang dipantau. Peringkat hanya dari kota yang dipantau di halaman ini.'));
+
+  const t = new Date(m.time + 'Z');
+  const timeEl = document.getElementById('aqTime');
+  timeEl.textContent = isNaN(t) ? '' : 'Data jam ' + t.toLocaleTimeString('id-ID', {hour:'2-digit', minute:'2-digit', timeZone:'Asia/Jakarta'}).replace(':', '.') + ' WIB';
+  if (!isNaN(t) && Date.now() - t.getTime() > 3 * 3600 * 1000) {
+    body.appendChild(aqEl('div', 'aq-warn', 'Data ini lebih dari 3 jam yang lalu. Tekan "Perbarui" atau cek sumber resmi.'));
+  }
+}
+function renderAirError() {
+  const body = document.getElementById('aqBody');
+  body.textContent = '';
+  document.getElementById('aqTime').textContent = '';
+  body.appendChild(aqEl('div', 'aq-warn', 'Data kualitas udara belum dapat dimuat (periksa koneksi internet). Skrining tetap dapat digunakan; tekan "Perbarui" untuk mencoba lagi.'));
+}
+async function fetchJson(url, ms) {
+  const ctrl = new AbortController();
+  const timer = setTimeout(() => ctrl.abort(), ms);
+  try {
+    const r = await fetch(url, {signal: ctrl.signal});
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    return await r.json();
+  } finally { clearTimeout(timer); }
+}
+/* 1) baca udara.json (diperbarui tiap jam oleh server); 2) bila tidak ada/basi, ambil langsung dari Open-Meteo */
+async function getAirInfo() {
+  try {
+    const f = await fetchJson('udara.json?v=' + Math.floor(Date.now() / 300000), 8000);
+    const age = Date.now() - new Date(f.fetched).getTime();
+    if (Array.isArray(f.data) && Array.isArray(f.cities) && age < 3 * 3600 * 1000) {
+      const info = buildAir(f.data, f.cities);
+      if (info) return info;
+    }
+  } catch (err) { /* lanjut ke sumber langsung */ }
+  const d = await fetchJson(AQ_URL, 12000);
+  return buildAir(Array.isArray(d) ? d : [d], AQ_CITIES);
+}
+async function loadAir() {
+  const btn = document.getElementById('aqRefresh');
+  const body = document.getElementById('aqBody');
+  btn.disabled = true;
+  body.textContent = '';
+  body.appendChild(aqEl('p', 'small aq-msg', 'Memuat data kualitas udara…'));
+  try {
+    const info = await getAirInfo();
+    if (!info) throw new Error('Data kosong');
+    aq = {aqi: info.medan.aqi, pm25: info.medan.pm25, time: info.medan.time};
+    renderAir(info);
+  } catch (err) {
+    aq = null;
+    renderAirError();
+  } finally {
+    btn.disabled = false;
+  }
+}
+document.getElementById('aqRefresh').addEventListener('click', loadAir);
+loadAir();
+
+function checkedValues(name) {
+  return [...document.querySelectorAll('input[name="' + name + '"]:checked')].map(el => el.value);
+}
+function selectedLabel(id) {
+  const el = document.getElementById(id);
+  return el && el.selectedIndex >= 0 ? el.options[el.selectedIndex].text : 'Belum diisi';
+}
+function updateProgress() {
+  const required = [...form.querySelectorAll('[required]')];
+  const answered = required.filter(el => !!el.value).length;
+  const pct = Math.round((answered / required.length) * 100);
+  progressText.textContent = answered === 0 ? 'Belum ada pertanyaan wajib dijawab' : `${answered} dari ${required.length} pertanyaan wajib terisi`;
+  progressPct.textContent = `${pct}%`;
+  progressBar.style.width = `${pct}%`;
+}
+form.addEventListener('input', updateProgress);
+form.addEventListener('change', updateProgress);
+
+document.getElementById('noRisk').addEventListener('change', function() {
+  if (this.checked) document.querySelectorAll('input[name="risk"]').forEach(el => { if (el !== this) el.checked = false; });
+});
+document.querySelectorAll('input[name="risk"]:not(#noRisk)').forEach(el => el.addEventListener('change', function() {
+  if (this.checked) document.getElementById('noRisk').checked = false;
+}));
+document.getElementById('noSymptoms').addEventListener('change', function() {
+  if (this.checked) document.querySelectorAll('input[name="symptom"]').forEach(el => { if (el !== this) el.checked = false; });
+});
+document.querySelectorAll('input[name="symptom"]:not(#noSymptoms)').forEach(el => el.addEventListener('change', function() {
+  if (this.checked) document.getElementById('noSymptoms').checked = false;
+}));
+
+form.addEventListener('reset', () => {
+  setTimeout(() => {
+    resultBox.className = 'result hidden';
+    lastSummary = '';
+    updateProgress();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  }, 0);
+});
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (!form.reportValidity()) return;
+
+  const age = document.getElementById('age').value;
+  const risks = checkedValues('risk').filter(v => v !== 'Tidak ada kondisi di atas');
+  const symptoms = checkedValues('symptom').filter(v => v !== 'Tidak ada gejala di atas');
+  const exposure = document.getElementById('exposure').value;
+  const outdoor = document.getElementById('outdoor').value;
+  const duration = document.getElementById('duration').value;
+  const redFlags = [
+    document.getElementById('redBreath').checked,
+    document.getElementById('redChest').checked,
+    document.getElementById('redBlue').checked
+  ].some(Boolean);
+
+  const vulnerable = age === 'child' || age === 'older' || risks.length > 0;
+  const breathingSymptoms = symptoms.some(s => /Sesak napas|Mengi/.test(s));
+  const persistentSymptoms = symptoms.length > 0 && (duration === 'same' || duration === 'worse');
+  let level, title, summary, advice, cls;
+
+  if (redFlags) {
+    level = 'DARURAT'; cls = 'red';
+    title = 'Cari pertolongan medis darurat sekarang';
+    summary = 'Anda menandai satu atau lebih tanda bahaya. Jangan menunggu hasil skor atau membagikan formulir terlebih dahulu.';
+    advice = [
+      'Segera ke IGD atau hubungi layanan darurat setempat.',
+      'Minta orang lain membantu; jangan menyetir sendiri bila sesak berat, nyeri dada, kebingungan, atau hampir pingsan.',
+      'Jika aman, jauhi paparan asap sambil menunggu pertolongan.',
+      'Untuk arahan lanjutan, hubungi dr. Hendrik melalui WhatsApp 0852-7041-0537. Jangan menunda ke IGD untuk menunggu balasan.'
+    ];
+  } else if (breathingSymptoms || (symptoms.length > 0 && duration === 'worse') || persistentSymptoms || (vulnerable && symptoms.length > 0)) {
+    level = 'PERLU EVALUASI'; cls = 'amber';
+    title = 'Pertimbangkan pemeriksaan tenaga kesehatan';
+    summary = 'Jawaban Anda menunjukkan gejala pernapasan, gejala menetap/memburuk, atau gejala pada kelompok yang lebih rentan. Alat ini tidak dapat memastikan penyebabnya.';
+    advice = [
+      'Hubungi dokter/layanan kesehatan hari ini atau secepatnya, terutama jika sesak, mengi, atau aktivitas sehari-hari terganggu.',
+      'Jika gejala menjadi berat, muncul nyeri dada, kebiruan, kebingungan, atau pingsan, cari pertolongan darurat.',
+      'Kurangi paparan asap dan ikuti rencana pengobatan yang sudah diberikan dokter.'
+    ];
+  } else if (symptoms.length > 0) {
+    level = 'PANTAU DAN KURANGI PAPARAN'; cls = 'amber';
+    title = 'Ada keluhan yang perlu dipantau';
+    summary = 'Keluhan ringan seperti iritasi mata, hidung, tenggorokan, atau batuk dapat terjadi saat terpapar asap, tetapi penyebab lain juga mungkin.';
+    advice = [
+      'Kurangi paparan asap dan pantau apakah keluhan membaik.',
+      'Hubungi tenaga kesehatan jika keluhan menetap, berulang, memburuk, atau mengganggu aktivitas.',
+      'Cari pertolongan segera jika muncul tanda bahaya.'
+    ];
+  } else if (vulnerable || exposure === 'often' || exposure === 'work' || outdoor === 'high') {
+    level = 'RISIKO PAPARAN / KERENTANAN LEBIH TINGGI'; cls = 'amber';
+    title = 'Perkuat perlindungan dari asap';
+    summary = 'Anda melaporkan faktor kerentanan atau paparan yang cukup sering/lama, meskipun tidak memilih gejala saat ini.';
+    advice = [
+      'Kurangi waktu dan aktivitas fisik di luar ruangan saat asap tinggi.',
+      'Pantau kondisi kesehatan; bila muncul gejala, konsultasikan lebih awal karena Anda mungkin lebih rentan.',
+      'Siapkan obat rutin sesuai rencana dokter jika memiliki penyakit kronis; jangan mengubah dosis sendiri.'
+    ];
+  } else {
+    level = 'TIDAK ADA TANDA BAHAYA YANG DILAPORKAN'; cls = 'green';
+    title = 'Lanjutkan pencegahan dan tetap waspada';
+    summary = 'Dari jawaban yang Anda berikan, tidak ada tanda bahaya atau gejala yang dilaporkan. Ini bukan jaminan bahwa Anda bebas dari dampak asap atau penyakit.';
+    advice = [
+      'Pantau informasi kualitas udara dari sumber resmi.',
+      'Kurangi aktivitas di luar ruangan ketika asap atau polusi meningkat.',
+      'Ulangi penilaian jika kondisi atau gejala berubah.'
+    ];
+  }
+
+  if (!redFlags && aq && aq.aqi >= 101 && (vulnerable || symptoms.length > 0 || aq.aqi >= 151)) {
+    advice.push(`Kualitas udara Medan saat ini tergolong "${aqLevel(aq.aqi).label}" (skor ${aq.aqi} dari 500). Batasi aktivitas di luar ruangan dan gunakan N95/KN95 bila harus keluar.`);
+  }
+  if (cls === 'amber') {
+    advice.push('Disarankan berkonsultasi dengan dr. Hendrik melalui WhatsApp 0852-7041-0537 (gunakan tombol di bawah).');
+  }
+  const aqText = aq ? `${aqLevel(aq.aqi).label}, skor ${aq.aqi} dari 500, debu halus PM2.5 ${typeof aq.pm25 === 'number' ? aq.pm25.toFixed(1) : '–'} µg/m³ (perkiraan Open-Meteo/CAMS)` : 'Tidak tersedia saat skrining';
+
+  const exposureText = selectedLabel('exposure');
+  const outdoorText = selectedLabel('outdoor');
+  const ageText = selectedLabel('age');
+  const durationText = selectedLabel('duration');
+  const dateText = new Date().toLocaleString('id-ID', {dateStyle:'medium', timeStyle:'short'});
+  const details = document.getElementById('resultDetails');
+  details.innerHTML = '';
+  const ul = document.createElement('ul');
+  advice.forEach(text => { const li = document.createElement('li'); li.textContent = text; ul.appendChild(li); });
+  details.appendChild(ul);
+  const h3 = document.createElement('h3'); h3.textContent = 'Ringkasan jawaban'; details.appendChild(h3);
+  const sumList = document.createElement('ul');
+  const items = [
+    `Kelompok usia: ${ageText}`,
+    `Paparan asap: ${exposureText}`,
+    `Waktu di luar ruangan: ${outdoorText}`,
+    `Faktor kerentanan: ${risks.length ? risks.join(', ') : 'Tidak dipilih / tidak diketahui'}`,
+    `Gejala: ${symptoms.length ? symptoms.join(', ') : 'Tidak ada gejala yang dipilih'}`,
+    `Perkembangan gejala: ${symptoms.length ? (duration === 'none' ? 'Tidak dipilih' : durationText) : 'Tidak ada gejala'}`,
+    `Kualitas udara Medan: ${aqText}`
+  ];
+  items.forEach(text => { const li = document.createElement('li'); li.textContent = text; sumList.appendChild(li); });
+  details.appendChild(sumList);
+
+  document.getElementById('resultTag').textContent = level;
+  document.getElementById('resultTitle').textContent = title;
+  document.getElementById('resultSummary').textContent = summary;
+  document.getElementById('resultDate').textContent = `Dibuat pada perangkat Anda: ${dateText}. Hasil ini bukan diagnosis.`;
+  const showShare = cls === 'amber' && WA_OK;
+  document.getElementById('shareBtn').classList.toggle('hidden', !showShare);
+  document.getElementById('shareNote').classList.toggle('hidden', !showShare);
+  resultBox.className = `result ${cls}`;
+  resultBox.classList.remove('hidden');
+  lastSummary = [
+    'RINGKASAN SKRINING DAMPAK ASAP KARHUTLA',
+    `Waktu: ${dateText}`,
+    `Hasil: ${level} — ${title}`,
+    `Ringkasan: ${summary}`,
+    ...items,
+    `Saran: ${advice.join(' ')}`,
+    'Catatan: Skrining edukatif, bukan diagnosis atau pengganti pemeriksaan medis.'
+  ].join('\n');
+  resultBox.focus();
+  resultBox.scrollIntoView({behavior:'smooth', block:'start'});
+});
+
+document.getElementById('shareBtn').addEventListener('click', function() {
+  if (!lastSummary) return;
+  if (!WA_OK) {
+    alert('Nomor WhatsApp klinik belum dikonfigurasi. Pengelola halaman perlu mengganti GANTI_DENGAN_NOMOR_WA_ANDA pada kode HTML. Anda tetap dapat mencetak atau menyimpan hasil sebagai PDF.');
+    return;
+  }
+  const text = encodeURIComponent('Halo dr. Hendrik, saya ingin berkonsultasi berdasarkan hasil skrining berikut:\n\n' + lastSummary);
+  const url = `https://wa.me/${CONSULT_WA}?text=${text}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+});
+document.getElementById('printBtn').addEventListener('click', () => window.print());
+document.getElementById('editBtn').addEventListener('click', () => {
+  document.getElementById('screeningForm').scrollIntoView({behavior:'smooth', block:'start'});
+  document.getElementById('age').focus({preventScroll:true});
+});
+updateProgress();
+</script>
+</body>
+</html>
