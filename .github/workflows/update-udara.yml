@@ -2,7 +2,7 @@ name: Perbarui data udara
 
 on:
   schedule:
-    - cron: '1 * * * *'   # setiap jam, menit ke-1 (sama dengan WIB karena selisih 7 jam penuh)
+    - cron: '17 * * * *'  # setiap jam, menit ke-17 (hindari menit ke-0/1 yang paling padat di GitHub)
   workflow_dispatch:       # tombol "Run workflow" untuk uji manual
 
 permissions:
